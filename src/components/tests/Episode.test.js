@@ -13,8 +13,34 @@ const testEpisode = {
     runtime: 9801
 }
 
-test("renders without error", () => { });
+const testEpisodeWithoutImage = {
+    id: 9801,
+    name: 'Test Episode',
+    image: null,
+    season: 9801,
+    number: 9801,
+    summary: 'This is a test summary.',
+    runtime: 9801
+}
 
-test("renders the summary test passed as prop", () => { });
+test("renders without error", () => { 
+    render(<Episode episode={testEpisode} />);
+ });
 
-test("renders default image when image is not defined", () => { });
+test("renders the summary test passed as prop", () => { 
+    render(<Episode episode={testEpisode} />);
+
+    const testSummary = screen.queryByText(/this is a test summary./i);
+
+    expect(testSummary).toBeInTheDocument();
+    expect(testSummary).toBeTruthy();
+    expect(testSummary).toHaveTextContent('This is a test summary.');
+ });
+
+test("renders default image when image is not defined", () => { 
+    render(<Episode episode={testEpisodeWithoutImage} />);
+
+    const image = screen.queryByAltText('https://i.ibb.co/2FsfXqM/stranger-things.png');
+
+    expect(image).toBeInTheDocument();
+ });
