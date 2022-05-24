@@ -68,5 +68,5 @@ test('renders show season options matching your data when the button is clicked'
 
     await waitFor(() => {
         expect(mockDisplayFunction).toHaveBeenCalled();
-    })
+    });
 });
