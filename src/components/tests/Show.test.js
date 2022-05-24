@@ -25,7 +25,7 @@ const testShow = {
             episodes: []
         }
     ]
-}
+};
 
 test('renders without errors', () => { 
     render(<Show show={testShow} selectedSeason={'none'} />);
